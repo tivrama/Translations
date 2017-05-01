@@ -16,12 +16,14 @@ module.exports = {
   },
 
   addEntry: function (data) {
-    // TODO:
+    // Filter JSON according to language options and convert to CSV
     // Call functions in config/toolKit
       // Make new json var filtered with only relevent languages => var filteredJSON = (config/toolKit).filterJSON(data.jsonFile, options);
+      var filteredJSON;
       // Convert json to csv => var customerCSV = (config/toolKit).convertCSV(filteredJSON);
       var customerCSV;
 
+    // Save to DB
     var optionsFile = stringifyJSON(data.optionsFile);
     // create a new entry from the model
     var newEntry = Main.Entry({
@@ -37,7 +39,7 @@ module.exports = {
       }
       var returnObj = {
         customerObj: savedEntry,
-        customerCSV: customerCSV
+        customerCSV: customerCSV // This is the CSV the customer needs to fill out
       };
       console.log('Success saving entry to db: ', returnObj);
     });

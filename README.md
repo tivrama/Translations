@@ -10,7 +10,6 @@ module.exports = {
     dbuser: 'your_mlab_account',
     dbpassword: 'your_mlab_password'
   }
-
 }; 
 ```
 
@@ -47,7 +46,7 @@ CustomerObject {
 ```
 Route(/entry) {
 	Get(customerName):  get a single jsonFile belonging to the customer
-		returns responce -> jsonFile
+		returns response -> jsonFile
 
 	Post(customerObject): (Flow step 2)
 		- create a customer with their jsonFile and languageOptions in the DB
