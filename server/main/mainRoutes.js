@@ -25,7 +25,7 @@ module.exports = function (app) {
     // Updtate a specific entry
     .put(function (req, res) {
       mainControl.updateEntry(req.body, function (entry) {
-        res.status(204).send(err);
+        res.status(200).send(err);
       }, function (err) {
         console.log('err in route: ', err);
         res.status(500).send(err);
