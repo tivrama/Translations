@@ -20,6 +20,7 @@ module.exports = {
     var newEntry = Main.Entry({
       customer: data.customer,
       jsonFile: data.jsonFile,
+      optionsFile: data.optionsFile
     });
     
     newEntry.save(function (err, savedEntry) {

@@ -6,7 +6,7 @@ module.exports = function (app) {
     // Get entry for the given customer
     .get(function (req, res) {
       mainControl.getEntry(req.query.customer).then(function (entry) {
-        res.status(201).send(entry);
+        res.status(200).send(entry);
       }, function (err) {
         console.log('err in route: ', err);
         res.status(500).send(err);
@@ -16,7 +16,7 @@ module.exports = function (app) {
     .post(function (req, res) {
       // Add the entry to the database
       mainControl.addEntry(req.body).then(function (entry) {
-        res.status(200).send(entry);
+        res.status(201).send(entry);
       }, function (err) {
         console.log('err in route: ', err);
         res.status(500).send(err);
@@ -25,7 +25,7 @@ module.exports = function (app) {
     // Updtate a specific entry
     .put(function (req, res) {
       mainControl.updateEntry(req.body, function (entry) {
-        res.status(200).send(err);
+        res.status(204).send(err);
       }, function (err) {
         console.log('err in route: ', err);
         res.status(500).send(err);

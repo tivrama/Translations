@@ -11,6 +11,11 @@ var EntrySchema = new mongoose.Schema({
     type: String,
     required: true,
   }
+  // Stringafied json -> the actual options file
+  optionsFile: {
+    type: String,
+    required: true,
+  }
 }, {
   timestamps: true,
 });

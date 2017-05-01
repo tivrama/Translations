@@ -19,7 +19,7 @@ module.exports = {
 ```
 
 
-Flow
+##Flow
 - BEFORE FLOW: JSON is downloaded to pc from from HUB
 1) Customer name is filled in and language options are selected
 2) Json is uploaded to client and Posted to server with customerName and with language options
@@ -31,7 +31,7 @@ Flow
 7) CSV is uploaded to client with customerName
 8) CSV is posted to server.  Server converts to JSON.  Server uses customerName to get json File from DB and converts to object.  All relevent values are overwritten.  Server stringafies updated jsonFile, puts to DB, and sends jsonFile to client as responce.   
 IN THE FUTURE: A Get to get a customer's jsonFile
-
+```
 CustomerObject {
 	customerName,
 	jsonFile,
@@ -43,10 +43,10 @@ CustomerObject {
 		etc: etc
 	}
 }
-
-Routes:
 ```
-Route(/entry) {}
+##Routes:
+```
+Route(/entry) {
 	Get(customerName):  get a single jsonFile belonging to the customer
 		returns responce -> jsonFile
 
