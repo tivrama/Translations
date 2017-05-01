@@ -10,7 +10,7 @@ var EntrySchema = new mongoose.Schema({
   jsonFile: {
     type: String,
     required: true,
-  }
+  },
   // Stringafied json -> the actual options file
   optionsFile: {
     type: String,

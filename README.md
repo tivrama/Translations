@@ -9,11 +9,7 @@ module.exports = {
   mlab: {
     dbuser: 'your_mlab_account',
     dbpassword: 'your_mlab_password'
-  },
-
-  expJwt: {
-    scrt: 'Shhhhh!'
-  },
+  }
 
 }; 
 ```
