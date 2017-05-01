@@ -16,9 +16,10 @@ module.exports = {
 
 
 ##Flow
+
 - BEFORE FLOW: JSON is downloaded to pc from from HUB
 1) Customer name is filled in and language options are selected
-2) Json is uploaded to client and Posted to server with customerName and with language options
+2) JSON is uploaded to client and Posted to server with customerName and with language options
 3) Post to DB with customerName, jsonFile, languageOptionsJson
 4) Server uses languageOptionsJson to parse out relevent fields from jsonFile.  Creates new filteredJson which is converted to CSV
 5) CSV is sent in response to Client.
@@ -29,9 +30,9 @@ module.exports = {
 IN THE FUTURE: A Get to get a customer's jsonFile
 ```
 CustomerObject {
-	customerName,
-	jsonFile,
-	Options {
+	customerName: string,
+	jsonFile: stringafiedJSON,
+	Options: stringafiedJSON => {
 		english: true,
 		french: false,
 		navajo: false
@@ -40,19 +41,21 @@ CustomerObject {
 	}
 }
 ```
+
 ##Routes:
+
 ```
 Route(/entry) {
 	Get(customerName):  get a single jsonFile belonging to the customer
 		returns responce -> jsonFile
 
-	Post(customerObject): 
+	Post(customerObject): (Flow step 2)
 		- create a customer with their jsonFile and languageOptions in the DB
 		- toolKit functions filter relevent languages from jsonFile and create a jsonFileSnippet
 		- toolKit functions convert jsonFileSnippet to CSV
 		return response -> CSV
 
-	Put(customerName, CSV): update a customer's jsonFile with their filled in CSV
+	Put(customerName, CSV): update a customer's jsonFile with their filled in CSV (Flow step 8)
 		- toolKit functions convert CSV to jsonFileSnippet and is linted
 		- Get to DB with customerName bring sup jsonFile
 		- jsonFile's relevent fields are overwritten by jsonFileSnippet
