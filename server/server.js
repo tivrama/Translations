@@ -19,6 +19,4 @@ app.listen(port);
 
 // App server confirmation
 console.log('Your app running on port: ' + port);
-
-// expose app - use for testing
 exports = module.exports = app;

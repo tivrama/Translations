@@ -6,21 +6,28 @@ module.exports = {
   // the input is the customerFileName, which in this case will be the parent of the jsonFiles we want
   getEntry: function (customerFileName) {
     // find the json file with the given customerFileName and return it
-    return Main.Entry.find(customerFileName, function (err, jsonFile) {
+    return Main.Entry.find(customerFileName, function (err, customerObj) {
       if (err) {
         console.log('err in controller getEntries fn: ', err);
         return err;
       }
-      return jsonFile;
+      return customerObj;
     });
   },
 
   addEntry: function (data) {
+    // TODO:
+    // Call functions in config/toolKit
+      // Make new json var filtered with only relevent languages => var filteredJSON = (config/toolKit).filterJSON(data.jsonFile, options);
+      // Convert json to csv => var customerCSV = (config/toolKit).convertCSV(filteredJSON);
+      var customerCSV;
+
+    var optionsFile = stringifyJSON(data.optionsFile);
     // create a new entry from the model
     var newEntry = Main.Entry({
       customer: data.customer,
       jsonFile: data.jsonFile,
-      optionsFile: data.optionsFile
+      optionsFile: optionsFile
     });
     
     newEntry.save(function (err, savedEntry) {
@@ -28,7 +35,11 @@ module.exports = {
         console.log('err in controller addEntry fn: ', err);
         return err;
       }
-      console.log('Success saving entry to db: ', savedEntry);
+      var returnObj = {
+        customerObj: savedEntry,
+        customerCSV: customerCSV
+      };
+      console.log('Success saving entry to db: ', returnObj);
     });
   },
 

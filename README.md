@@ -15,7 +15,7 @@ module.exports = {
 ```
 
 
-##Flow
+## Flow
 
 - BEFORE FLOW: JSON is downloaded to pc from from HUB
 1) Customer name is filled in and language options are selected
@@ -31,8 +31,8 @@ IN THE FUTURE: A Get to get a customer's jsonFile
 ```
 CustomerObject {
 	customerName: string,
-	jsonFile: stringafiedJSON,
-	Options: stringafiedJSON => {
+	jsonFile: stringifiedJSON,
+	Options: stringifiedJSON => {
 		english: true,
 		french: false,
 		navajo: false
@@ -42,7 +42,7 @@ CustomerObject {
 }
 ```
 
-##Routes:
+## Routes:
 
 ```
 Route(/entry) {
