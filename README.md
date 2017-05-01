@@ -45,8 +45,8 @@ CustomerObject {
 }
 
 Routes:
-
-Route(/entry) {
+```
+Route(/entry) {}
 	Get(customerName):  get a single jsonFile belonging to the customer
 		returns responce -> jsonFile
 
@@ -66,3 +66,4 @@ Route(/entry) {
 	Delete(customerName): deletes customer and their jsonFile
 		returns response -> CustomerObject
 }
+```
