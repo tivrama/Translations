@@ -1,4 +1,5 @@
 var Main = require('./mainModel.js');
+var toolKit = require('../config/toolKit.js');
 
 module.exports = {
 
@@ -19,7 +20,7 @@ module.exports = {
     // Filter JSON according to language options and convert to CSV
     // Call functions in config/toolKit
       // Make new json var filtered with only relevent languages => var filteredJSON = (config/toolKit).filterJSON(data.jsonFile, options);
-      var filteredJSON;
+      var filteredJSON = toolKit.filterJson(data.json, data.options);
       // Convert json to csv => var customerCSV = (config/toolKit).convertCSV(filteredJSON);
       var customerCSV;
 
