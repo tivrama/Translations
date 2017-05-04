@@ -4,6 +4,7 @@
 - ```npm i```
 - Create your config file (see below)
 - ```npm start```
+- Open localhost:3000
 
 ## Add your local config file
 
