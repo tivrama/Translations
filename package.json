@@ -17,9 +17,9 @@
   "author": "Narvar",
   "license": "ISC",
   "bugs": {
-    "url": "TBD"
+    "url": "https://github.com/tivrama/Translations"
   },
-  "homepage": "TBD",
+  "homepage": "https://tranlations.herokuapp.com",
   "dependencies": {
     "body-parser": "1.15.2",
     "csv-stringify": "^1.0.4",
