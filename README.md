@@ -8,7 +8,7 @@
 
 ## Add your local config file
 
-For Dev, create a file => server/config/config.js
+For Dev, create a file ```cd server/config touch config.js```
 
 Add below and fill in (config.js is in gitignore)
 
