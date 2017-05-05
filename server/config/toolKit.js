@@ -1,11 +1,18 @@
 // This is where the work for changing csv to json and validation can live.  Call from mainController
 var converter = require('json-2-csv');
+var stringify = require('csv-stringify');
 
-var filterJson = function(json, options) {
-	// TODO:  Get translations file and and notes on what to filter
-	var filteredJson = '';
-
-	return filteredJson;
+var makeJsonArray = function(json, options) {
+	// Count the number of languages in options, and duplicate the json for each one, and push to an array.
+	var jsonFileArray = [];
+	options = JSON.parse(options);
+	json = JSON.parse(json);
+	for (var key in options) {
+		if (options[key]) {
+			jsonFileArray.push(json);
+		}
+	}
+	return JSON.stringify(jsonFileArray);
 };
 
 var convertJsonToCSV = function(json) {
@@ -29,7 +36,7 @@ var convertCSVToJson = function(csv) {
 }
 
 module.exports = {
-  filterJson: filterJson,
+  makeJsonArray: makeJsonArray,
   convertJsonToCSV: convertJsonToCSV,
   convertCSVToJson: convertCSVToJson
 };

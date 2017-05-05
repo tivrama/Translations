@@ -3,7 +3,51 @@ var toolKit = require('../config/toolKit.js');
 
 module.exports = {
 
-//ENTRIES
+  // Creates a new customer with their Name, jsonFile, Options, along with _id and creation date
+  // Returns a csv string of the jsonFile array
+  addEntry: function (data) {
+    // A stringified json array of jsonFiles (one for each language)
+    var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
+
+    // Save to DB
+    // create a new entry from the model
+    var newEntry = Main.Entry({
+      customer: data.customer,
+      jsonFile: jsonFileArray,
+      optionsFile: data.optionsFile
+    });
+
+    // Convert json to csv
+    var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
+    
+    // Save json and options to DB
+    return newEntry.save(function (err, savedEntry) {
+      if (err) {
+        console.log('err in controller addEntry: ', err);
+        return err;
+      }
+      console.log('Success saving entry to db: ', savedEntry.customer);
+      return customerCSV;
+    });
+  },
+
+
+  updateEntry: function (entry) {
+    console.log('Inside updateEntry Controller: ', entry);
+    var query = { _id: entry._id };
+    var update = {
+      jsonFile: entry.jsonFile
+    };
+    return Main.Entry.update(query, update, function (err, success) {
+      if (err) {
+        console.log('err in controller updateEntry fn: ', err);
+        return err;
+      }
+      console.log('success: ', success);
+      return success;
+    });
+  },
+
   // the input is the customerFileName, which in this case will be the parent of the jsonFiles we want
   getEntry: function (customerFileName) {
     // find the json file with the given customerFileName and return it
@@ -16,67 +60,18 @@ module.exports = {
     });
   },
 
-  addEntry: function (data) {
-    // Filter JSON according to language options and convert to CSV
-    // Call functions in config/toolKit
-      // Make new json var filtered with only relevent languages => var filteredJSON = (config/toolKit).filterJSON(data.jsonFile, options);
-      var filteredJSON = toolKit.filterJson(data.json, data.options);
-      // Convert json to csv => var customerCSV = (config/toolKit).convertCSV(filteredJSON);
-      var customerCSV;
 
-    // Save to DB
-    var optionsFile = stringifyJSON(data.optionsFile);
-    // create a new entry from the model
-    var newEntry = Main.Entry({
-      customer: data.customer,
-      jsonFile: data.jsonFile,
-      optionsFile: optionsFile
-    });
-    
-    newEntry.save(function (err, savedEntry) {
-      if (err) {
-        console.log('err in controller addEntry fn: ', err);
-        return err;
-      }
-      var returnObj = {
-        customerObj: savedEntry,
-        customerCSV: customerCSV // This is the CSV the customer needs to fill out
-      };
-      console.log('Success saving entry to db: ', returnObj);
-    });
-  },
-
-  updateEntry: function (entry, next) {
-    console.log('Inside updateEntry Controller: ', entry);
-    var query = { _id: entry._id };
-    var update = {
-      jsonFile: entry.jsonFile
-    };
-    return Main.Entry.update(query, update, function (err, success) {
-      if (err) {
-        next(err);
-        console.log('err in controller updateEntry fn: ', err);
-        return;
-      }
-      next(success);
-      console.log('success: ', success);
-      return;
-    });
-  },
-
-  deleteEntry: function (entry, next) {
+  deleteEntry: function (entry) {
     console.log('Inside deleteEntry Controller: ', entry);
     var query = { _id: entry._id };
 
-    return Main.Entry.remove(query, function (err) {
+    return Main.Entry.remove(query, function (err, res) {
       if (err) {
         console.log('err in controller deleteEntry fn: ', err);
-        next(err);
-        return;
+        return err;
       } else {
         console.log('Success deleting entry');
-        next();
-        return;
+        return res;
       }
     });
   },
