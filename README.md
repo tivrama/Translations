@@ -1,3 +1,6 @@
+## Site
+Translations is deployed on Heroku at [Translations.herokuapp](https://tranlations.herokuapp.com)
+
 ## Getting Started
 
 - Make a fork and clone to your PC and cd into your project
