@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 
-var middleware = require('./config/middleware.js');
+var middleware = require('./middleware/middleware.js');
 var db = require('./db/db');
 
 // configuration ===========================================
