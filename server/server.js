@@ -18,5 +18,5 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 
 // App server confirmation
-console.log('Your app running on port: ' + port);
+console.log('Translations running on port: ' + port);
 exports = module.exports = app;
