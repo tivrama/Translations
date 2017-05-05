@@ -12,6 +12,12 @@ middleware(app, express);
 
 // connect to mongoDB database
 mongoose.connect(db.url);
+// var dbConnection = mongoose.connection;
+// dbConnection.on('error', console.error.bind(console, 'connection error: '));
+// dbConnection.once('open', function() {
+// 	console.log('Connected to DB!');
+// });
+
 
 var port = process.env.PORT || 3000;
 
