@@ -1,5 +1,5 @@
 var Main = require('./mainModel.js');
-var toolKit = require('../config/toolKit.js');
+var toolKit = require('../middleware/toolKit.js');
 
 module.exports = {
 
