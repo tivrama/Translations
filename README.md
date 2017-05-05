@@ -1,3 +1,6 @@
+## Site
+Translations is deployed on Heroku at [Translations.herokuapp](https://tranlations.herokuapp.com)
+
 ## Getting Started
 
 - Make a fork and clone to your PC and cd into your project
@@ -8,7 +11,7 @@
 
 ## Add your local config file
 
-For Dev, create a file => server/config/config.js
+For Dev, create a file ```cd server/config touch config.js```
 
 Add below and fill in (config.js is in gitignore)
 
