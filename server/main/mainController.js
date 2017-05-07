@@ -7,28 +7,28 @@ module.exports = {
   // Returns a csv string of the jsonFile array
   addEntry: function (data) {
     // A stringified json array of jsonFiles (one for each language)
-    // var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
-    return "hello world";
+    var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
+
     // Save to DB
     // create a new entry from the model
-    // var newEntry = Main.Entry({
-    //   customer: data.customer,
-    //   jsonFile: jsonFileArray,
-    //   optionsFile: data.optionsFile
-    // });
+    var newEntry = Main.Entry({
+      customer: data.customer,
+      jsonFile: jsonFileArray,
+      optionsFile: data.optionsFile
+    });
 
-    // // Convert json to csv
-    // var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
+    // Convert json to csv
+    var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
     
-    // // Save json and options to DB
-    // return newEntry.save(function (err, savedEntry) {
-    //   if (err) {
-    //     console.log('err in controller addEntry: ', err);
-    //     return err;
-    //   }
-    //   console.log('Success saving entry to db: ', savedEntry.customer);
-    //   return customerCSV;
-    // });
+    // Save json and options to DB
+    return newEntry.save(function (err, savedEntry) {
+      if (err) {
+        console.log('err in controller addEntry: ', err);
+        return err;
+      }
+      console.log('Success saving entry to db: ', savedEntry.customer);
+      return customerCSV;
+    });
   },
 
 
