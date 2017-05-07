@@ -11,24 +11,24 @@ module.exports = {
     return "hello world";
     // Save to DB
     // create a new entry from the model
-    // var newEntry = Main.Entry({
-    //   customer: data.customer,
-    //   jsonFile: jsonFileArray,
-    //   optionsFile: data.optionsFile
-    // });
+    var newEntry = Main.Entry({
+      customer: data.customer,
+      jsonFile: jsonFileArray,
+      optionsFile: data.optionsFile
+    });
 
-    // // Convert json to csv
-    // var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
+    // Convert json to csv
+    var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
     
-    // // Save json and options to DB
-    // return newEntry.save(function (err, savedEntry) {
-    //   if (err) {
-    //     console.log('err in controller addEntry: ', err);
-    //     return err;
-    //   }
-    //   console.log('Success saving entry to db: ', savedEntry.customer);
-    //   return customerCSV;
-    // });
+    // Save json and options to DB
+    return newEntry.save(function (err, savedEntry) {
+      if (err) {
+        console.log('err in controller addEntry: ', err);
+        return err;
+      }
+      console.log('Success saving entry to db: ', savedEntry.customer);
+      return customerCSV;
+    });
   },
 
 

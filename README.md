@@ -39,7 +39,7 @@ There are two mLab DB's: translation and translation-dev.  This can be toggled i
 7) CSV is stringified and posted to server.  Server converts to JSON.  
 8) Server uses customerName to get json File from DB and converts to object.  All relevent values are overwritten.  
 9) Server stringifies updated jsonFile, puts to DB, and sends jsonFile to client as response.  
-IN THE FUTURE: A Get, using customer name, to get a customer's jsonFile.
+- IN THE FUTURE: A Get, using customer name, to get a customer's jsonFile.
 
 
 ## CustomerObject
