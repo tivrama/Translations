@@ -7,8 +7,8 @@ module.exports = {
   // Returns a csv string of the jsonFile array
   addEntry: function (data) {
     // A stringified json array of jsonFiles (one for each language)
-    // var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
-    return "hello world";
+    var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
+
     // Save to DB
     // create a new entry from the model
     var newEntry = Main.Entry({
