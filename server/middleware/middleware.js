@@ -25,5 +25,5 @@ module.exports = function (app, express) {
   mainRoutes(mainRouter);
 
   // authentication middleware used to decode token and made available on the request
-  app.use('/api/main', mainRouter);
+  app.use('/api', mainRouter);
 };

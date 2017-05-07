@@ -36,14 +36,15 @@ There are two mLab DB's: translation and translation-dev.  This can be toggled i
 5) CSV-string is sent in response to Client where it is converted to a CSV file which is automatically downloaded.
 - CSV is filled out by customer
 6) CSV is uploaded to client with customerName
-7) CSV is stringafied and posted to server.  Server converts to JSON.  Server uses customerName to get json File from DB and converts to object.  All relevent values are overwritten.  Server stringifies updated jsonFile, puts to DB, and sends jsonFile to client as response. 
-8)   
+7) CSV is stringified and posted to server.  Server converts to JSON.  
+8) Server uses customerName to get json File from DB and converts to object.  All relevent values are overwritten.  
+9) Server stringifies updated jsonFile, puts to DB, and sends jsonFile to client as response.  
 IN THE FUTURE: A Get, using customer name, to get a customer's jsonFile.
 
 
 ## CustomerObject
 
-Customer object will have an autofilled _id and creation date.  It will have the customer name, a jsonFile which is an array of all the json Languages from Hub.  I
+Customer object will have an autofilled _id and creation date.  It will have the customer name, a jsonFile which is an array of all the json Languages from Hub.
 ```
 CustomerObject {
   customerName: string,           // Customer name
