@@ -1,24 +1,25 @@
 var mainControl = require('./mainController.js');
-var then = require('mongoose').then;
+var Promise = require('bluebird');
+Promise.promisify(mainControl.addEntry);
 
 module.exports = function (app) {
 
   app.route('/entry')
-    // Get entry for the given customer
-    .get(function (req, res) {
-      mainControl.getEntry(req.query.customer).then(function (entry) {
-        res.status(200).send(entry);
-      }, function (err) {
-        console.log('err in route: ', err);
-        res.status(500).send(err);
-      });
-    })
     // Add entry to db
     .post(function (req, res) {
-      console.log('inside post: ', req.body);
       // Add the entry to the database
-      mainControl.addEntry(req.body).then(function (entry) {
-        res.status(201).send(entry);
+      mainControl.addEntry(req.body, function(err, entry) {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.status(201).send(entry);
+          }
+      });
+    })
+    // Get entry for the given customer
+    .get(function (req, res) {
+      mainControl.getEntry(req).then(function (entry) {
+        res.status(200).send(entry);
       }, function (err) {
         console.log('err in route: ', err);
         res.status(500).send(err);

@@ -6,7 +6,7 @@ Translations is deployed on Heroku at [Translations.herokuapp](https://tranlatio
 - Make a fork and clone to your PC and cd into your project
 - ```npm i```
 - Create your config file (see below)
-- ```npm start```
+- ```npm start``` or ```nodemon```
 - Open localhost:3000
 
 ## Add your local config file
