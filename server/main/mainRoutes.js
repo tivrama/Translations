@@ -9,38 +9,41 @@ module.exports = function (app) {
     .post(function (req, res) {
       // Add the entry to the database
       mainControl.addEntry(req.body, function(err, entry) {
-          if (err) {
-            res.status(500).send(err);
-          } else {
-            res.status(201).send(entry);
-          }
-      });
-    })
-    // Get entry for the given customer
-    .get(function (req, res) {
-      mainControl.getEntry(req).then(function (entry) {
-        res.status(200).send(entry);
-      }, function (err) {
-        console.log('err in route: ', err);
-        res.status(500).send(err);
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(201).send(entry);
+        }
       });
     })
     // Updtate a specific entry
     .put(function (req, res) {
-      mainControl.updateEntry(req.body, function (entry) {
-        res.status(204).send(err);
-      }, function (err) {
-        console.log('err in route: ', err);
-        res.status(500).send(err);
+      mainControl.updateEntry(req.body, function (err, entry) {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(entry);
+        }
+      });
+    })
+    // Get entry for the given customer
+    .get(function (req, res) {
+      mainControl.getEntry(req.query, function (err, entry) {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(entry);
+        }
       });
     })
     // Delete a specific entry
     .delete(function (req, res) {
-      mainControl.deleteEntry(req.body, function () {
+      mainControl.deleteEntry(req.body, function (err, entry) {
+        if (err) {
+          res.status(500).send(err);
+        } else {
           res.status(200).send(entry);
-      }, function (err) {
-        console.log('err in route: ', err);
-        res.status(500).send(err);
+        }
       });
     });
 
