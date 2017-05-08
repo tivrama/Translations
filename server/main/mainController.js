@@ -21,58 +21,58 @@ module.exports = {
     // var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
     
     // Save json and options to DB
-    newEntry.save(function (err, savedEntry) {
+    newEntry.save(function (err, success) {
       if (err) {
         console.log('err in controller addEntry: ', err);
         return next(err);
       }
-      console.log('Success saving entry to db: ', savedEntry);
-      return next(err, savedEntry);
+      console.log('Success saving entry to db: ', success);
+      return next(err, success);
     });
   },
 
 
-  updateEntry: function (entry) {
-    console.log('Inside updateEntry Controller: ', entry);
-    var query = { _id: entry._id };
+  updateEntry: function (data, next) {
+    console.log('Inside updateEntry Controller: ', data);
+    var query = { customer: data.customer };
     var update = {
-      jsonFile: entry.jsonFile
+      jsonFile: data.jsonFile
     };
-    return Main.Entry.update(query, update, function (err, success) {
+    Main.Entry.update(query, update, function (err, success) {
       if (err) {
         console.log('err in controller updateEntry fn: ', err);
-        return err;
+        return next(err);
       }
       console.log('success: ', success);
-      return success;
+      return next(err, success);
     });
   },
+
 
   // the input is the customerFileName, which in this case will be the parent of the jsonFiles we want
-  getEntry: function (customerFileName) {
-    // find the json file with the given customerFileName and return it
-    return Main.Entry.find(customerFileName, function (err, customerObj) {
+  getEntry: function (data, next) {
+    var query = { customer: data.customer };
+    // find the json file with the given data and return it
+    Main.Entry.find(data, function (err, success) {
       if (err) {
         console.log('err in controller getEntries fn: ', err);
-        return err;
+        return next(err);
       }
-      return customerObj;
+      return next(err, success);
     });
   },
 
 
-  deleteEntry: function (entry) {
-    console.log('Inside deleteEntry Controller: ', entry);
-    var query = { _id: entry._id };
+  deleteEntry: function (data, next) {
+    var query = { customer: data.customer };
 
-    return Main.Entry.remove(query, function (err, res) {
+    Main.Entry.remove(query, function (err, success) {
       if (err) {
         console.log('err in controller deleteEntry fn: ', err);
-        return err;
-      } else {
-        console.log('Success deleting entry');
-        return res;
+        return next(err);
       }
+      console.log('Success deleting entry');
+      return next(err, success);
     });
   },
 
