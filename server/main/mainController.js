@@ -1,33 +1,33 @@
 var Main = require('./mainModel.js');
 var toolKit = require('../middleware/toolKit.js');
 
+
 module.exports = {
 
   // Creates a new customer with their Name, jsonFile, Options, along with _id and creation date
   // Returns a csv string of the jsonFile array
-  addEntry: function (data) {
+  addEntry: function (data, next) {
     // A stringified json array of jsonFiles (one for each language)
-    var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
-
-    // Save to DB
+    // var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
+    // // Save to DB
     // create a new entry from the model
     var newEntry = Main.Entry({
       customer: data.customer,
-      jsonFile: jsonFileArray,
+      jsonFile: data.jsonFile,
       optionsFile: data.optionsFile
     });
 
-    // Convert json to csv
-    var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
+    // // Convert json to csv
+    // var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
     
     // Save json and options to DB
-    return newEntry.save(function (err, savedEntry) {
+    newEntry.save(function (err, savedEntry) {
       if (err) {
         console.log('err in controller addEntry: ', err);
-        return err;
+        return next(err);
       }
-      console.log('Success saving entry to db: ', savedEntry.customer);
-      return customerCSV;
+      console.log('Success saving entry to db: ', savedEntry);
+      return next(err, savedEntry);
     });
   },
 
