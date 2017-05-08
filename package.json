@@ -21,7 +21,6 @@
   },
   "homepage": "https://tranlations.herokuapp.com",
   "dependencies": {
-    "bluebird": "^3.5.0",
     "body-parser": "1.15.2",
     "csv-stringify": "^1.0.4",
     "express": "^4.14.0",
