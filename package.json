@@ -22,11 +22,11 @@
   "homepage": "https://tranlations.herokuapp.com",
   "dependencies": {
     "body-parser": "1.15.2",
-    "csv-stringify": "^1.0.4",
-    "express": "^4.14.0",
-    "json-2-csv": "^2.1.1",
-    "mongoose": "^4.5.3",
-    "morgan": "^1.7.0",
+    "csv-stringify": "1.0.4",
+    "express": "4.14.0",
+    "json2csv": "3.7.3",
+    "mongoose": "4.5.3",
+    "morgan": "1.7.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
