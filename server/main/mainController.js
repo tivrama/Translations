@@ -7,18 +7,16 @@ module.exports = {
   // Creates a new customer with their Name, jsonFile, Options, along with _id and creation date
   // Returns a csv string of the jsonFile array
   addEntry: function (data, next) {
-    // A stringified json array of jsonFiles (one for each language)
-    // var jsonFileArray = toolKit.makeJsonArray(data.json, data.options);
-    // // Save to DB
+    // An object with a stringified json array of jsonFiles (one for each language), and count of languages
+    var jsonFileArray = toolKit.makeJsonArray(data.jsonFile, data.optionsFile);
+    var stringifiedOptions = JSON.stringify(data.optionsFile);
+    // Save to DB
     // create a new entry from the model
     var newEntry = Main.Entry({
       customer: data.customer,
-      jsonFile: data.jsonFile,
-      optionsFile: data.optionsFile
+      jsonFile: jsonFileArray,
+      optionsFile: stringifiedOptions
     });
-
-    // // Convert json to csv
-    // var customerCSV = toolKit.convertJsonToCSV(jsonFileArray);
     
     // Save json and options to DB
     newEntry.save(function (err, success) {
@@ -26,7 +24,7 @@ module.exports = {
         console.log('err in controller addEntry: ', err);
         return next(err);
       }
-      console.log('Success saving entry to db: ', success);
+      console.log('Success saving entry to db');
       return next(err, success);
     });
   },
