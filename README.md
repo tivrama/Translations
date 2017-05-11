@@ -86,5 +86,5 @@ Route(/entry) {
 
 
 ## Converting files
-This project is using json-2-csv from npm.  For docs, go to [json-2-csv](https://www.npmjs.com/package/json-2-csv)
+This project is using json-2-csv from npm.  For docs, go to [json2csv](https://www.npmjs.com/package/json2csv)
 

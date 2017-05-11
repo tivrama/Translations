@@ -1,21 +1,10 @@
+var path = require('path');
 var mainControl = require('./mainController.js');
 var toolKit = require('../middleware/toolKit.js');
 
 module.exports = function (app) {
 
   app.route('/entry')
-
-    // // Add entry to db
-    // .post(function (req, res) {
-    //   // Add the entry to the database
-    //   mainControl.addEntry(req.body, function(err, entry) {
-    //     if (err) {
-    //       res.status(500).send(err);
-    //     } else {
-    //       res.status(201).send(entry);
-    //     }
-    //   });
-    // })
 
     // Add entry to db
     .post(function (req, res) {
@@ -24,17 +13,11 @@ module.exports = function (app) {
         if (err) {
           res.status(500).send(err);
         } else {
-          // Convert json to csv -> this will be one column with json keys, and a column for each language
-          var data = toolKit.convertJsonToCSV(req.body.jsonFile, req.body.optionsFile);
-          var customerCSVfile = req.body.customer + '.csv';
-          res.attachment(customerCSVfile);
-          res.status(201).send(data);
+          toolKit.convertJsonToCSV(req.body.jsonFile, req.body.optionsFile);
+          res.status(201).sendFile('formList.csv', { root: path.join(__dirname, '../../') })
         }
       });
     })
-
-
-
 
     // Updtate a specific entry
     .put(function (req, res) {

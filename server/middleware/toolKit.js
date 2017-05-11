@@ -1,10 +1,7 @@
 // This is where the work for changing csv to json and validation can live.  Call from mainController
-var json2csv = require('json2csv');
 var fs = require('fs');
-var stringify = require('csv-stringify');
 
 var makeJsonArray = function(json, options) {
-console.log("INSIDE makeJsonArray");
 	// Count the number of languages in options, and duplicate the json for each one, and push to an array.
 	var jsonFileArray = [];
 	for (var key in options) {
@@ -16,18 +13,42 @@ console.log("INSIDE makeJsonArray");
 	return jsonFileArray;
 };
 
+
+
+
 var convertJsonToCSV = function(json, options) {
-	var fields = ['Keys'];
+	// Make column names - these are the languages from options
 	var fieldNames = ['Keys'] // This is the column headers (top row)
 	for (var key in options) {
 		if (options[key]) {
-			fields.push(key);
 			fieldNames.push(key);
 		}
 	}
-	var data = json2csv({ data: json, fields: fields, fieldNames: fieldNames });
-	return data;	
+	// Clear existing file
+	fs.writeFile('formList.csv', '', function(){console.log('done')})
+	// Create the csv and write the column headers
+	fs.writeFile('formList.csv', fieldNames, 'utf8', function (err) {
+		if (err) {
+			console.log('Some error occured - file either not saved or corrupted file saved.');
+		}
+	});
+	// Append key and values to the body of the CSV
+	for (var jsonKey in json) {
+		if (json[jsonKey].indexOf(',') > -1) {
+			json[jsonKey] = json[jsonKey].replace(/,/gi, "-");
+		}
+
+		var keyValuePair = ['\n' + jsonKey, json[jsonKey]]
+		fs.appendFile('formList.csv', keyValuePair, 'utf8', function (err) {
+			if (err) {
+				console.log('Some error occured - file either not saved or corrupted file saved.');
+			}
+		});
+	}
 };
+
+
+
 
 var convertCSVToJson = function(csv) {
 	// var jsonarray = csv2json(csv, function(err, array) {
