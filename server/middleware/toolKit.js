@@ -24,6 +24,8 @@ var convertJsonToCSV = function(json, options) {
 			fieldNames.push(key);
 		}
 	}
+	// Clear existing file
+	fs.writeFile('formList.csv', '', function(){console.log('done')})
 	// Create the csv and write the column headers
 	fs.writeFile('formList.csv', fieldNames, 'utf8', function (err) {
 		if (err) {
