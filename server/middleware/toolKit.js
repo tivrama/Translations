@@ -26,7 +26,7 @@ var convertJsonToCSV = function(json, options) {
 	}
 	// Clear existing file
 	fs.writeFile('formList.csv', '', function(){console.log('done')})
-	// Create the csv and write the column headers
+	// Write the column headers
 	fs.writeFile('formList.csv', fieldNames, 'utf8', function (err) {
 		if (err) {
 			console.log('Some error occured - file either not saved or corrupted file saved.');
@@ -45,6 +45,9 @@ var convertJsonToCSV = function(json, options) {
 			}
 		});
 	}
+	return fs.readFile('formList.csv', function(err) {
+		if (err) console.log(err)
+	})
 };
 
 
