@@ -14,7 +14,11 @@ module.exports = function (app) {
           res.status(500).send(err);
         } else {
           toolKit.convertJsonToCSV(req.body.jsonFile, req.body.optionsFile);
-          res.status(201).sendFile('formList.csv', { root: path.join(__dirname, '../../') })
+          // var customerCSVfile = req.body.customer + '.csv';
+          // var customerCSVfile = 'formList' + '.csv';
+          res.attachment('../../formList.csv')
+          .status(201)
+          .sendFile('formList.csv', { root: path.join(__dirname, '../../') })
         }
       });
     })
