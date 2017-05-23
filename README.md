@@ -131,5 +131,5 @@ Route(/entry) {
 
 
 ## Converting files
-This project is using json-2-csv from npm.  For docs, go to [json2csv](https://www.npmjs.com/package/json2csv)
+This project is using csv (specifically csv-parse) from npm.  For docs, go to [csv-parse](http://csv.adaltas.com/parse/)
 

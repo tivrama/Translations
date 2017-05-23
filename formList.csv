@@ -1,7 +1,7 @@
 Keys,english,french,manderin,cantonese,japaneseft
-tracking_delivery_schedule_avail_status,Schedule your delivery
 widgets_edd_image_component_status_delivered,delivered
 tracking_status_exception_weather,Weather Delay
+tracking_delivery_schedule_avail_status,Schedule your delivery
 widgets_return_sms_sms_signup_copy,Also send me messages for special offers & promotions.
 widgets_contact_title,Need Help
 widgets_tracking_status_delivered_status_code,DELIVERED
@@ -18,7 +18,7 @@ tracking_status_exception_carrier_delay,Carrier Delay
 widgets_footer_narvar_terms,Terms of Use
 template_support_card_image_title,New Arrivals
 widgets_tracking_status_undl_excep_status,Undeliverable
-tracking_delivery_reschedule_nonavail_status,Delivery scheduled- rescheduling not available
+tracking_delivery_reschedule_nonavail_status,Delivery scheduled -  rescheduling not available
 widgets_edd_where_is_my_package_link_title,Trying to find your package?
 template_support_survey_panel_title,Help Us Improve
 widgets_sms_sms_cancel_update_text,Keep Current Number
@@ -28,11 +28,11 @@ template_marketing_delivered_panel_title,Delivery Date
 widgets_tracking_status_delivered_status,Delivered
 widgets_return_status_print_label,Print Your Return Label
 tracking_status_exception_deliv_sender,Undeliverable: Received by Sender
-widgets_return_survey_feedback_stars_rating_adjectives,Terrible-Bad-Ok-Good-Excellent
-template_returns_canceled_status_panel_title,Return Canceled
+widgets_return_survey_feedback_stars_rating_adjectives,Terrible - Bad - Ok - Good - Excellent
 widgets_return_edd_how_is_this_calculated_link_title,When can I expect my refund?
-widgets_return_sms_show_success_message,false
+template_returns_canceled_status_panel_title,Return Canceled
 widgets_tracking_status_justshipped_status_code,JUSTSHIPPED
+widgets_return_sms_show_success_message,false
 tracking_status_exception_canceled,Undeliverable: Canceled by Shipper
 tracking_delivery_schedule_nonavail_status,Delivery to be scheduled
 widgets_tracking_status_intransit_status_code,INTRANSIT
