@@ -1,9 +1,6 @@
-Keys,english,french,manderin,cantonese,japanese
-oogabooga,ooga? ooga ooga
-Buoop,Burp Blurp
-widgets_edd_days_remaining_sub_content,days left
-widgets_edd_image_component_status_delivered,delivered
+Keys,english,french,manderin,cantonese,japaneseft
 tracking_delivery_schedule_avail_status,Schedule your delivery
+widgets_edd_image_component_status_delivered,delivered
 tracking_status_exception_weather,Weather Delay
 widgets_return_sms_sms_signup_copy,Also send me messages for special offers & promotions.
 widgets_contact_title,Need Help
@@ -32,8 +29,8 @@ widgets_tracking_status_delivered_status,Delivered
 widgets_return_status_print_label,Print Your Return Label
 tracking_status_exception_deliv_sender,Undeliverable: Received by Sender
 widgets_return_survey_feedback_stars_rating_adjectives,Terrible-Bad-Ok-Good-Excellent
-widgets_return_edd_how_is_this_calculated_link_title,When can I expect my refund?
 template_returns_canceled_status_panel_title,Return Canceled
+widgets_return_edd_how_is_this_calculated_link_title,When can I expect my refund?
 widgets_return_sms_show_success_message,false
 widgets_tracking_status_justshipped_status_code,JUSTSHIPPED
 tracking_status_exception_canceled,Undeliverable: Canceled by Shipper
