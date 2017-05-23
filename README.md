@@ -59,7 +59,7 @@ CustomerObject {
 }
 ```
 
-## Detailed Example
+## CustomerObject - Detailed Example
 
 ```
 {
