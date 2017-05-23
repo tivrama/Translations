@@ -20,6 +20,7 @@ var convertJsonToCSV = function(json, options) {
 	// Make column names - these are the languages from options
 	var fieldNames = ['Keys'] // This is the column headers (top row)
 	for (var key in options) {
+		// This if statement removes any null or undefined languages
 		if (options[key]) {
 			fieldNames.push(key);
 		}
@@ -34,14 +35,17 @@ var convertJsonToCSV = function(json, options) {
 	});
 	// Append key and values to the body of the CSV
 	for (var jsonKey in json) {
+		// If the value contains a ",", then appendFile makes a new cell.  So we need to remove the ","
 		if (json[jsonKey].indexOf(',') > -1) {
+			// Replace "," with "-"
 			json[jsonKey] = json[jsonKey].replace(/,/gi, "-");
 		}
-
-		var keyValuePair = ['\n' + jsonKey, json[jsonKey]]
+		// Make key-value pair.  Put in '\n' for a new row before each pair
+		var keyValuePair = ['\n' + jsonKey, json[jsonKey]];
+		// Add the ke-value pairs to the csv file
 		fs.appendFile('formList.csv', keyValuePair, 'utf8', function (err) {
 			if (err) {
-				console.log('Some error occured - file either not saved or corrupted file saved.');
+				console.log('Some error occured - file either not saved or corrupted file saved.', err);
 			}
 		});
 	}
