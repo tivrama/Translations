@@ -1,5 +1,6 @@
 // This is where the work for changing csv to json and validation can live.  Call from mainController
 var fs = require('fs');
+var parse = require('csv-parse');
 
 var makeJsonArray = function(json, options) {
 	// Count the number of languages in options, and duplicate the json for each one, and push to an array.
@@ -12,8 +13,6 @@ var makeJsonArray = function(json, options) {
 	jsonFileArray = JSON.stringify(jsonFileArray);
 	return jsonFileArray;
 };
-
-
 
 
 var convertJsonToCSV = function(json, options) {
@@ -37,8 +36,8 @@ var convertJsonToCSV = function(json, options) {
 	for (var jsonKey in json) {
 		// If the value contains a ",", then appendFile makes a new cell.  So we need to remove the ","
 		if (json[jsonKey].indexOf(',') > -1) {
-			// Replace "," with "-"
-			json[jsonKey] = json[jsonKey].replace(/,/gi, "-");
+			// Replace "," with " - "
+			json[jsonKey] = json[jsonKey].replace(/,/gi, " - ");
 		}
 		// Make key-value pair.  Put in '\n' for a new row before each pair
 		var keyValuePair = ['\n' + jsonKey, json[jsonKey]];
@@ -49,16 +48,13 @@ var convertJsonToCSV = function(json, options) {
 			}
 		});
 	}
-	return fs.readFile('formList.csv', function(err) {
-		if (err) console.log(err)
-	})
 };
 
 
 
 
 var convertCSVToJson = function(csv) {
-	// var jsonarray = csv2json(csv, function(err, array) {
+	// var jsonarray = parse(csv, function(err, array) {
 	// 	if (err) {
 	// 		console.log('Error in converting CSV to JSON', err)
 	// 	}
