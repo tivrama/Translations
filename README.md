@@ -59,6 +59,51 @@ CustomerObject {
 }
 ```
 
+## Detailed Example
+
+```
+{
+  "customer": "Peninsula Trading",
+  "jsonFile": {
+    "widgets_edd_days_remaining_sub_content": "days left",
+    "widgets_edd_image_component_status_delivered": "delivered",
+    "tracking_delivery_schedule_avail_status": "Schedule your delivery",
+    "tracking_status_exception_weather": "Weather Delay",
+    "widgets_contact_title": "Need Help",
+    "widgets_tracking_status_delivered_status_code": "DELIVERED",
+    "widgets_tracking_status_itpp_intran_status": "In Transit to Pickup Point",
+    "widgets_edd_today": "Today",
+    "widgets_new_sms_signup_error": "Please enter a valid phone number.",
+    "widgets_survey_feedback_stars_rating_text": "Rate your shipping experience",
+    "widgets_sms_sms_update_header": "Update your number",
+    "widgets_shipping_activity_carrier_handoff_tooltip_link_title": "What is this?",
+    "tracking_status_exception_carrier_delay": "Carrier Delay",
+    "widgets_footer_narvar_terms": "Terms of Use",
+    "template_support_card_image_title": "New Arrivals",
+    "widgets_edd_where_is_my_package_link_title": "Trying to find your package?",
+    "tracking_status_exception_undeliv": "Undeliverable",
+    "widgets_tracking_status_dlpp_deliv_status": "Delivered to a Pickup Point",
+    "template_marketing_delivered_panel_title": "Delivery Date",
+    "widgets_tracking_status_delivered_status": "Delivered",
+    "widgets_return_status_print_label": "Print Your Return Label",
+    "tracking_status_exception_deliv_sender": "Undeliverable: Received by Sender",
+    "widgets_return_survey_feedback_stars_rating_adjectives": "Terrible,Bad,Ok,Good,Excellent",
+    "widgets_return_edd_how_is_this_calculated_link_title": "When can I expect my refund?",
+    "template_returns_canceled_status_panel_title": "Return Canceled",
+    "widgets_return_sms_show_success_message": "false",
+    "widgets_tracking_status_justshipped_status_code": "JUSTSHIPPED"
+  },
+  "optionsFile": {  // Any language not needed, is just left off the optionsFile obj
+    "english": true,
+    "french": true,
+    "manderin": true,
+    "cantonese": true,
+    "japanese": true
+  }
+}
+```
+
+
 ## Routes:
 
 ```
