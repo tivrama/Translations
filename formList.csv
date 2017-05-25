@@ -1,7 +1,7 @@
-Keys,english,french,manderin,cantonese,japaneseft
-widgets_edd_image_component_status_delivered,delivered
-tracking_status_exception_weather,Weather Delay
+Keys,english,french,manderin,cantonese,japaneseelivered
+widgets_edd_days_remaining_sub_content,days left
 tracking_delivery_schedule_avail_status,Schedule your delivery
+tracking_status_exception_weather,Weather Delay
 widgets_return_sms_sms_signup_copy,Also send me messages for special offers & promotions.
 widgets_contact_title,Need Help
 widgets_tracking_status_delivered_status_code,DELIVERED
@@ -31,8 +31,8 @@ tracking_status_exception_deliv_sender,Undeliverable: Received by Sender
 widgets_return_survey_feedback_stars_rating_adjectives,Terrible - Bad - Ok - Good - Excellent
 widgets_return_edd_how_is_this_calculated_link_title,When can I expect my refund?
 template_returns_canceled_status_panel_title,Return Canceled
-widgets_tracking_status_justshipped_status_code,JUSTSHIPPED
 widgets_return_sms_show_success_message,false
+widgets_tracking_status_justshipped_status_code,JUSTSHIPPED
 tracking_status_exception_canceled,Undeliverable: Canceled by Shipper
 tracking_delivery_schedule_nonavail_status,Delivery to be scheduled
 widgets_tracking_status_intransit_status_code,INTRANSIT

@@ -33,8 +33,21 @@ module.exports = {
   updateEntry: function (data, next) {
     console.log('Inside updateEntry Controller: ', data);
     var query = { customer: data.customer };
+
+    // Need to get customer object
+    var customerObject = Main.Entry.find(query, function (err, customerObj) {
+      if (err) {
+        console.log('err in controller updateEntries fn - could not find customer: ', err);
+        return next(err);
+      }
+      return next(err, customerObj);
+    });   
+    console.log('CUSTOMER_OBJECT', customerObject)
+    // Send customer object and completed CSV to the toolkit.  Should return updated jsonFile
+    // var jsonFile = toolKit.convertCSVToJson(data.csv, customerObject.jsonFile);
+
     var update = {
-      jsonFile: data.jsonFile
+      jsonFile: jsonFile
     };
     Main.Entry.update(query, update, function (err, success) {
       if (err) {
@@ -51,7 +64,7 @@ module.exports = {
   getEntry: function (data, next) {
     var query = { customer: data.customer };
     // find the json file with the given data and return it
-    Main.Entry.find(data, function (err, success) {
+    Main.Entry.find(query, function (err, success) {
       if (err) {
         console.log('err in controller getEntries fn: ', err);
         return next(err);

@@ -25,7 +25,7 @@ var convertJsonToCSV = function(json, options) {
 		}
 	}
 	// Clear existing file
-	fs.writeFile('formList.csv', '', function(){console.log('done')})
+	fs.writeFile('formList.csv', '', function(){ console.log('Finished resetting output csv') });
 	// Write the column headers
 	fs.writeFile('formList.csv', fieldNames, 'utf8', function (err) {
 		if (err) {
@@ -53,14 +53,18 @@ var convertJsonToCSV = function(json, options) {
 
 
 
-var convertCSVToJson = function(csv) {
-	// var jsonarray = parse(csv, function(err, array) {
-	// 	if (err) {
-	// 		console.log('Error in converting CSV to JSON', err)
-	// 	}
-	// 	return array;
-	// });
-	// return jsonarray[0];
+var convertCSVToJson = function(csv, customerObject) {
+	// Reset the Input CSV
+	// fs.writeFile('formList-Response.csv', '', function(){console.log('Finished resetting input csv')})
+
+
+	var jsonarray = parse(csv, function(err, array) {
+		if (err) {
+			console.log('Error in converting CSV to JSON', err)
+		}
+		return array;
+	});
+	return jsonarray[0];
 }
 
 module.exports = {
