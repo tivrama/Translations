@@ -1,6 +1,7 @@
 var path = require('path');
 var mainControl = require('./mainController.js');
 var toolKit = require('../middleware/toolKit.js');
+var fs = require('fs');
 
 module.exports = function (app) {
 
@@ -24,7 +25,10 @@ module.exports = function (app) {
 
     // Updtate a specific entry
     .put(function (req, res) {
-      mainControl.updateEntry(req.body, function (err, entry) {
+      // console.log('REQUEST: ', req)
+      // console.log('REQUEST.QUERY(PARAMS): ', req.query)
+
+      mainControl.updateEntry(req.query, function (err, entry) {
         if (err) {
           res.status(500).send(err);
         } else {
